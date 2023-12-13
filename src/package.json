@@ -1,0 +1,50 @@
+{
+  "name": "spm-api",
+  "version": "1.0.0",
+  "description": "An WEB API meant to store and provide executables and scripts data",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:migrate": "sequelize-cli-typescript db:migrate",
+    "db:migrate:undo": "sequelize-cli-typescript db:migrate:undo",
+    "db:migrate:undo:all": "sequelize-cli-typescript db:migrate:undo:all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simple-package-manager/api.git"
+  },
+  "keywords": [
+    "api",
+    "spm"
+  ],
+  "author": "Vinicius Mayrink",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simple-package-manager/api/issues"
+  },
+  "homepage": "https://github.com/simple-package-manager/api#readme",
+  "dependencies": {
+    "apollo-server-koa": "^3.13.0",
+    "koa": "^2.14.2",
+    "koa-body": "^6.0.1",
+    "koa-bodyparser": "^4.4.1",
+    "koa-cors": "^0.0.16",
+    "koa-graphql": "^0.12.0",
+    "koa-jwt": "^4.0.4",
+    "koa-router": "^12.0.1",
+    "koa-send": "^5.0.1",
+    "nodemon": "^3.0.2",
+    "pg": "^8.11.3",
+    "sequelize-typescript": "^2.1.6",
+    "ts-node": "^10.9.2",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/koa-bodyparser": "^4.3.12",
+    "@types/koa-cors": "^0.0.6",
+    "@types/koa-router": "^7.4.8",
+    "sequelize-cli-typescript": "^3.2.0-c",
+    "typescript": "^5.3.3"
+  }
+}
