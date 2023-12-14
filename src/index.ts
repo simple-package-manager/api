@@ -5,7 +5,7 @@ import resolvers from './resolvers';
 const schemaString = `
 type User {
   id: ID!
-  username: String!
+  userName: String!
   email: String!
 }
 
@@ -15,7 +15,7 @@ type Query {
 }
 
 type Mutation {
-  addUser(username: String!, email: String!): User
+  addUser(userName: String!, email: String!): User
 }
 `;
 

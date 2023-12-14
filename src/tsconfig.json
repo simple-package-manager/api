@@ -1,7 +1,17 @@
 {
-  "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
-    "preserveConstEnums": true
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
   },
   "include": ["**/*"],
   "exclude": ["**/*.spec.ts"]

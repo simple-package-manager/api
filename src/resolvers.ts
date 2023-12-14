@@ -1,20 +1,20 @@
-import db from './models';
-
-const users = [
-  { id: '1', username: 'john_doe', email: 'john@example.com' },
-  { id: '2', username: 'jane_doe', email: 'jane@example.com' },
-];
+import { User } from "./entity/User";
+import { connect } from './connection';
 
 const resolvers = {
   Query: {
-    users: async () => await db.User.findAll(),
-    user: (_: any, user: any) => users.find(u => u.id === user.id),
+    users: async () => (await connect()).getRepository(User).find(),
+    user: async (_: any, user: any) => (await connect()).getRepository(User).findOne({ id: user.id }),
   },
   Mutation: {
-    addUser: ({ username, email }: { username: string, email: string }) => {
-      const newUser = { id: String(users.length + 1), username, email };
-      users.push(newUser);
-      return newUser;
+    addUser: async (_: any, { userName, email }: User) => {
+      const user = new User;
+      user.userName = userName;
+      user.email = email;
+
+      await (await connect())
+        .manager
+        .save(user);
     },
   }
 };

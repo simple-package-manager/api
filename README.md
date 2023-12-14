@@ -7,3 +7,4 @@ An WEB API meant to store and provide executables and scripts data
 ```bash
 docker compose up
 ```
+

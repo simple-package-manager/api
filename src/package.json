@@ -6,9 +6,11 @@
   "scripts": {
     "start": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:migrate": "sequelize-cli-typescript db:migrate",
-    "db:migrate:undo": "sequelize-cli-typescript db:migrate:undo",
-    "db:migrate:undo:all": "sequelize-cli-typescript db:migrate:undo:all"
+    "build": "NODE_ENV=production tsc --build",
+    "typeorm:migrate": "typeorm migration:generate -d migration -n",
+    "typeorm:show": "typeorm migration:show",
+    "typeorm:revert": "typeorm migration:run",
+    "typeorm:run": "typeorm migration:run"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
   "homepage": "https://github.com/simple-package-manager/api#readme",
   "dependencies": {
     "apollo-server-koa": "^3.13.0",
+    "commonjs": "^0.0.1",
     "koa": "^2.14.2",
     "koa-body": "^6.0.1",
     "koa-bodyparser": "^4.4.1",
@@ -36,15 +39,15 @@
     "koa-send": "^5.0.1",
     "nodemon": "^3.0.2",
     "pg": "^8.11.3",
-    "sequelize-typescript": "^2.1.6",
+    "reflect-metadata": "^0.2.0",
     "ts-node": "^10.9.2",
-    "type-graphql": "^1.1.1"
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.45"
   },
   "devDependencies": {
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-cors": "^0.0.6",
     "@types/koa-router": "^7.4.8",
-    "sequelize-cli-typescript": "^3.2.0-c",
     "typescript": "^5.3.3"
   }
 }
