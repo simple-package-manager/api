@@ -1,34 +1,23 @@
 import Koa from 'koa';
-import { ApolloServer } from 'apollo-server-koa';
+import Router from 'koa-router';
+import { server } from './graphql/schema';
 
-import resolvers from './resolvers';
-const schemaString = `
-type User {
-  id: ID!
-  userName: String!
-  email: String!
-}
-
-type Query {
-  users: [User]
-  user(id: ID!): User
-}
-
-type Mutation {
-  addUser(userName: String!, email: String!): User
-}
-`;
-
-const server = new ApolloServer({
-  typeDefs: schemaString,
-  resolvers,
-});
+import { Dependency } from './entity/Dependency';
+import { connect } from './connection';
 
 const app = new Koa();
+const router = new Router();
 
 server.start().then(() => {
   server.applyMiddleware({ app });
 });
 
-app.listen(process.env.PORT);
+router.get('/dependencyTree', async (ctx, next) => {
+  ctx.body = await (await connect()).getTreeRepository(Dependency).findTrees();
+});
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .listen(process.env.PORT);
 

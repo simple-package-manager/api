@@ -2,15 +2,16 @@
   "name": "spm-api",
   "version": "1.0.0",
   "description": "An WEB API meant to store and provide executables and scripts data",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production tsc --build",
-    "typeorm:migrate": "typeorm migration:generate -d migration -n",
-    "typeorm:show": "typeorm migration:show",
-    "typeorm:revert": "typeorm migration:run",
-    "typeorm:run": "typeorm migration:run"
+    "to:migrate": "typeorm migration:generate -d migration -n",
+    "to:show": "typeorm migration:show",
+    "to:revert": "typeorm migration:run",
+    "to:run": "typeorm migration:run",
+    "to:create": "typeorm entity:create -n"
   },
   "repository": {
     "type": "git",
