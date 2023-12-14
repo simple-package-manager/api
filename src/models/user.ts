@@ -1,6 +1,6 @@
 import {
     Sequelize,
-    DataTypes
+    DataTypes,
 } from 'sequelize';
 
 export interface UserAttributes {
@@ -19,15 +19,11 @@ export interface UserInstance {
 
 }
 
-export = (sequelize: Sequelize, DataTypes: DataTypes) => {
-    var User = sequelize.define('User', {
-        username: DataTypes.STRING,
-        email: DataTypes.STRING
+export default (sequelize: Sequelize, DT: typeof DataTypes) => {
+    const User = sequelize.define('User', {
+        username: DT.STRING,
+        email: DT.STRING
     });
-
-    User.associate = function(models) {
-        // associations can be defined here
-    };
 
     return User;
 };

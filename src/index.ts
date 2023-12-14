@@ -1,6 +1,4 @@
 import Koa from 'koa';
-import Router from 'koa-router';
-import bodyParser from 'koa-bodyparser';
 import { ApolloServer } from 'apollo-server-koa';
 
 import resolvers from './resolvers';
@@ -27,7 +25,6 @@ const server = new ApolloServer({
 });
 
 const app = new Koa();
-const router = new Router();
 
 server.start().then(() => {
   server.applyMiddleware({ app });

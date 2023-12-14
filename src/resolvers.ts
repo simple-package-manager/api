@@ -1,3 +1,5 @@
+import db from './models';
+
 const users = [
   { id: '1', username: 'john_doe', email: 'john@example.com' },
   { id: '2', username: 'jane_doe', email: 'jane@example.com' },
@@ -5,7 +7,7 @@ const users = [
 
 const resolvers = {
   Query: {
-    users: () => users,
+    users: async () => await db.User.findAll(),
     user: (_: any, user: any) => users.find(u => u.id === user.id),
   },
   Mutation: {

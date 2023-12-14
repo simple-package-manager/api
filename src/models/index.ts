@@ -6,7 +6,7 @@ var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
-var db        = {};
+var db: any   = {};
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -16,11 +16,16 @@ if (config.use_env_variable) {
 
 fs
   .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  .filter((file: any) => {
+    return (
+      file.indexOf('.') !== 0 &&
+      file !== basename &&
+      file.slice(-3) === '.ts' &&
+      file.indexOf('.test.ts') === -1
+    );
   })
-  .forEach(file => {
-    var model = sequelize['import'](path.join(__dirname, file));
+  .forEach((file: any) => {
+    const model = require(path.join(__dirname, file)).default(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
@@ -33,4 +38,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;
