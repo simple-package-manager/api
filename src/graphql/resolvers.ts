@@ -1,12 +1,12 @@
 import { User } from '../entity/User';
 import { Dependency } from '../entity/Dependency';
-import { connect } from '../connection';
+import { AppDataSource } from "../data-source";
 
 const resolvers = {
   Query: {
-    users: async () => (await connect()).getRepository(User).find(),
-    user: async (_: any, user: any) => (await connect()).getRepository(User).findOne({ id: user.id }),
-    dependencies: async (_: any, user: any) => (await connect()).getTreeRepository(Dependency).findTrees(),
+    users: async () => AppDataSource.getRepository(User).find(),
+    user: async (_: any, user: any) => AppDataSource.getRepository(User).findOneBy({ id: user.id }),
+    dependencies: async (_: any, user: any) => AppDataSource.getTreeRepository(Dependency).findTrees(),
   },
   Mutation: {
     addUser: async (_: any, { userName, email }: User) => {
@@ -14,7 +14,7 @@ const resolvers = {
       user.userName = userName;
       user.email = email;
 
-      return await (await connect())
+      return await AppDataSource
         .manager
         .save(user);
     },
@@ -22,9 +22,9 @@ const resolvers = {
       const dependency = new Dependency();
       dependency.name = name;
       dependency.osTypesSupported = osTypesSupported;
-      dependency.parent = await (await connect()).getRepository(Dependency).findOne({ id: parseInt(parent, 10) });
+      dependency.parent = await AppDataSource.getRepository(Dependency).findOneBy({ id: parseInt(parent, 10) });
 
-      return await (await connect())
+      return await AppDataSource
         .manager
         .save(dependency);
     }

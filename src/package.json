@@ -43,7 +43,7 @@
     "reflect-metadata": "^0.2.0",
     "ts-node": "^10.9.2",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.2.45"
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@types/koa-bodyparser": "^4.3.12",
