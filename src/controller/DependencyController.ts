@@ -1,6 +1,6 @@
 import { Get, JsonController } from 'routing-controllers';
-import { AppDataSource } from '../data-source';
-import { Dependency } from '../entity/Dependency';
+import { AppDataSource } from '@/data-source';
+import { Dependency } from '@/entity/Dependency';
 
 @JsonController()
 export class DependencyController {

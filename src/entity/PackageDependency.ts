@@ -5,8 +5,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { Package } from './Package';
-import { Dependency } from './Dependency';
+import { Package } from '@/entity/Package';
+import { Dependency } from '@/entity/Dependency';
 
 @Entity()
 export class PackageDependency {

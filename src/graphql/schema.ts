@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-koa';
-import resolvers from './resolvers';
+import resolvers from '@/graphql/resolvers';
 
 const schemaString = `
 type User {

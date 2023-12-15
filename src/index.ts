@@ -1,8 +1,8 @@
 import { createKoaServer } from 'routing-controllers';
 import path from 'path';
 
-import { AppDataSource } from './data-source';
-import { server } from './graphql/schema';
+import { AppDataSource } from '@/data-source';
+import { server } from '@/graphql/schema';
 
 // Config routing
 const app = createKoaServer({

@@ -7,8 +7,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { User } from './User';
-import { PackageDependency } from './PackageDependency';
+import { User } from '@/entity/User';
+import { PackageDependency } from '@/entity/PackageDependency';
 
 @Entity()
 export class Package {

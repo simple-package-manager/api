@@ -1,6 +1,6 @@
-import { User } from '../entity/User';
-import { Dependency } from '../entity/Dependency';
-import { AppDataSource } from "../data-source";
+import { User } from '@/entity/User';
+import { Dependency } from '@/entity/Dependency';
+import { AppDataSource } from "@/data-source";
 
 const resolvers = {
   Query: {

@@ -50,6 +50,7 @@
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-cors": "^0.0.6",
     "@types/koa-router": "^7.4.8",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
   }
 }
