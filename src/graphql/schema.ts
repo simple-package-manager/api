@@ -12,8 +12,8 @@ type Dependency {
   id: ID!
   name: String
   osTypesSupported: [String]
-  parent: Dependency
-  children: [Dependency]
+  dependent: Dependency
+  dependencies: [Dependency]
 }
 
 type Query {

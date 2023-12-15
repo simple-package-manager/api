@@ -6,13 +6,13 @@
   "scripts": {
     "start": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production ttsc --build",
-    "build-only": "ttsc --build",
-    "to:generate": "typeorm migration:generate -d build/data-source.js",
-    "to:show": "typeorm migration:show -d build/data-source.js",
-    "to:revert": "typeorm migration:revert -d build/data-source.js",
-    "to:run": "typeorm migration:run -d build/data-source.js",
-    "to:create": "typeorm entity:create"
+    "build": "NODE_ENV=production USE_BUILD_ENTITIES_PATH=true ttsc --build",
+    "build-only": "USE_BUILD_ENTITIES_PATH=true ttsc --build",
+    "to:generate": "USE_BUILD_ENTITIES_PATH=true typeorm migration:generate -d build/data-source.js",
+    "to:show": "USE_BUILD_ENTITIES_PATH=true typeorm migration:show -d build/data-source.js",
+    "to:revert": "USE_BUILD_ENTITIES_PATH=true typeorm migration:revert -d build/data-source.js",
+    "to:run": "USE_BUILD_ENTITIES_PATH=true typeorm migration:run -d build/data-source.js",
+    "to:create": "USE_BUILD_ENTITIES_PATH=true typeorm entity:create"
   },
   "repository": {
     "type": "git",
@@ -54,7 +54,7 @@
     "@types/koa-router": "^7.4.8",
     "tsconfig-paths": "^4.2.0",
     "ttypescript": "^1.5.15",
-    "typescript": "^5.3.3",
+    "typescript": "^4.9.5",
     "typescript-transform-paths": "^3.4.6"
   }
 }

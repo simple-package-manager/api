@@ -19,7 +19,7 @@ export class DependencyController {
 
   @Post('/dependency')
   async save(@Body() dependency: Dependency, @BodyParam('parentId') parentId?: number) {
-    dependency.parent = await AppDataSource.getRepository(Dependency).findOneBy({ id: parentId ?? 0 });
+    dependency.dependent = await AppDataSource.getRepository(Dependency).findOneBy({ id: parentId ?? 0 });
     return AppDataSource.manager.save(dependency);
   }
 
