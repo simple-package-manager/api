@@ -12,5 +12,6 @@ export const AppDataSource = new DataSource({
   entities: ['entity/**/*.{js,ts}'],
   subscribers: ['build/subscriber/**/*.{js,ts}'],
   migrations: ['build/migration/**/*.{js,ts}'],
+  migrationsRun: true,
 });
 
