@@ -8,21 +8,21 @@ export class PackageController {
   @Get('/package')
   get() {
     return AppDataSource.getRepository(Package).find({
-        relations: {
-            user: true,
-            directDependencies: true,
-        }
+      relations: {
+        user: true,
+        directDependencies: true,
+      }
     });
   }
 
   @Get('/package/:id')
   async getOne(@Param('id') id: number) {
     return await AppDataSource.getRepository(Package).findOne({
-        relations: {
-            user: true,
-            directDependencies: true,
-        },
-        where: { id },
+      relations: {
+        user: true,
+        directDependencies: true,
+      },
+      where: { id },
     });
   }
 

@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn
@@ -15,10 +16,10 @@ export class Package {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   name: string;
 
-  @OneToOne(() => User)
+  @ManyToOne(() => User, (user) => user.packages)
   @JoinColumn()
   user: User;
 

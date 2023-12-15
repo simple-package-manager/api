@@ -17,7 +17,10 @@
     "esModuleInterop": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" }
+    ]
   },
   "include": ["**/*"],
   "exclude": ["**/*.spec.ts"]

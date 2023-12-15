@@ -1,15 +1,19 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import { Package } from './Package';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
-  @Column()
-  userName: string
+  @Column({ unique: true })
+  userName: string;
 
-  @Column()
-  email: string
+  @Column({ unique: true })
+  email: string;
+
+  @OneToMany(() => Package, (pckg) => pckg.user)
+  packages: Package[];
 
   @CreateDateColumn()
   createdAt: Date;
