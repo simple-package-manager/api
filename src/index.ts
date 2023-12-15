@@ -1,25 +1,21 @@
-import Koa from 'koa';
-import Router from 'koa-router';
+import { createKoaServer } from 'routing-controllers';
+import path from 'path';
+
 import { AppDataSource } from './data-source';
-
 import { server } from './graphql/schema';
-import { Dependency } from './entity/Dependency';
 
-const app = new Koa();
-const router = new Router();
+// Config routing
+const app = createKoaServer({
+  controllers: [path.join(__dirname + '/controller/*.{js,ts}')],
+})
 
+// Handles GraphQL requests
 server.start().then(() => {
   server.applyMiddleware({ app });
 });
 
+// Initialize ORM and start server
 AppDataSource.initialize().then(() => {
-  router.get('/dependencyTree', async (ctx, next) => {
-    ctx.body = await AppDataSource.getTreeRepository(Dependency).findTrees();
-  });
-
-  app
-    .use(router.routes())
-    .use(router.allowedMethods())
-    .listen(process.env.PORT);
+  app.listen(process.env.PORT);
 });
 
