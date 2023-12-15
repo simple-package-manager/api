@@ -16,7 +16,6 @@ export class PackageDependency {
   @ManyToOne(() => Package, (pckg) => pckg.directDependencies)
   package: Package;
 
-  @OneToOne(() => Dependency)
-  @JoinColumn()
+  @ManyToOne(() => Dependency, (dependency) => dependency.packageDependencies)
   dependency: Dependency;
 }

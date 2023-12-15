@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production ttsc --build",
     "build-only": "ttsc --build",
-    "to:generate": "typeorm migration:generate -d build/data-source.j",
+    "to:generate": "typeorm migration:generate -d build/data-source.js",
     "to:show": "typeorm migration:show -d build/data-source.js",
     "to:revert": "typeorm migration:revert -d build/data-source.js",
     "to:run": "typeorm migration:run -d build/data-source.js",

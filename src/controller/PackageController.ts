@@ -2,6 +2,9 @@ import { Body, BodyParam, Delete, Get, JsonController, OnUndefined, Param, Post 
 import { AppDataSource } from '@/data-source';
 import { Package } from '@/entity/Package';
 import { User } from '@/entity/User';
+import { PackageDependency } from '@/entity/PackageDependency';
+import { Dependency } from '@/entity/Dependency';
+import { EntityManager } from 'typeorm';
 
 @JsonController()
 export class PackageController {
@@ -27,8 +30,19 @@ export class PackageController {
   }
 
   @Post('/package')
-  async save(@Body() pckg: Package, @BodyParam('userId') userId?: number) {
+  async save(@Body() pckg: Package, @BodyParam('userId') userId?: number, @BodyParam('dependencyIds') dependencyIds?: number[]) {
     pckg.user = await AppDataSource.getRepository(User).findOneBy({ id: userId ?? 0 });
+    
+    // @TODO: Associate dependencies when creating a package
+    // AppDataSource.transaction(async (entityManager: EntityManager) => {
+    //   for (const dependencyId of dependencyIds) {
+    //     const packageDep = new PackageDependency();
+    //     packageDep.package = pckg;
+    //     packageDep.dependency = await AppDataSource.getRepository(Dependency).findOneBy({ id: dependencyId });
+    //     entityManager.save(packageDep);
+    //   }
+    // });
+
     return AppDataSource.manager.save(pckg);
   }
 

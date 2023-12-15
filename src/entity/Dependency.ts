@@ -1,11 +1,13 @@
 import {
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Tree,
   TreeChildren,
   TreeParent
 } from 'typeorm';
+import { PackageDependency } from './PackageDependency';
 
 export enum OSType {
   LINUX = 'linux',
@@ -19,11 +21,14 @@ export class Dependency {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   name: string;
 
   @Column('simple-array')
   osTypesSupported: string[];
+
+  @OneToMany(() => PackageDependency, (pckgDeps) => pckgDeps.package)
+  packageDependencies: PackageDependency[];
 
   @TreeChildren()
   children: Dependency[];

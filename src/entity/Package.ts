@@ -20,7 +20,6 @@ export class Package {
   name: string;
 
   @ManyToOne(() => User, (user) => user.packages)
-  @JoinColumn()
   user: User;
 
   @OneToMany(() => PackageDependency, (pckgDeps) => pckgDeps.package)
