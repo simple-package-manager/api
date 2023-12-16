@@ -31,8 +31,8 @@ export class Dependency {
   packageDependencies: PackageDependency[];
 
   @TreeChildren()
-  dependencies: Dependency[];
+  dependents: Dependency[];
 
   @TreeParent()
-  dependent: Dependency;
+  dependentOf: Dependency;
 }

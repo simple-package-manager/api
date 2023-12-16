@@ -12,8 +12,8 @@ type Dependency {
   id: ID!
   name: String
   osTypesSupported: [String]
-  dependent: Dependency
-  dependencies: [Dependency]
+  dependentOf: Dependency
+  dependents: [Dependency]
 }
 
 type Query {
@@ -24,7 +24,7 @@ type Query {
 
 type Mutation {
   addUser(userName: String!, email: String!): User
-  addDependency(name: String!, osTypesSupported: [String], parent: String): Dependency
+  addDependency(name: String!, osTypesSupported: [String], dependentOf: String): Dependency
 }
 `;
 

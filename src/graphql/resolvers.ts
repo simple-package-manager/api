@@ -18,11 +18,11 @@ const resolvers = {
         .manager
         .save(user);
     },
-    addDependency: async (_: any, { name, osTypesSupported, dependent }: {name: string, osTypesSupported: string[], dependent: string}) => {
+    addDependency: async (_: any, { name, osTypesSupported, dependentOf }: {name: string, osTypesSupported: string[], dependentOf: string}) => {
       const dependency = new Dependency();
       dependency.name = name;
       dependency.osTypesSupported = osTypesSupported;
-      dependency.dependent = await AppDataSource.getRepository(Dependency).findOneBy({ id: parseInt(dependent, 10) });
+      dependency.dependentOf = await AppDataSource.getRepository(Dependency).findOneBy({ id: parseInt(dependentOf, 10) });
 
       return await AppDataSource
         .manager
